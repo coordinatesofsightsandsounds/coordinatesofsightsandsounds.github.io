@@ -9,3 +9,8 @@ npm run dev
 ```bash
 npm run build
 ```
+
+## Deploy
+```bash
+git subtree push --prefix dist origin master
+```
