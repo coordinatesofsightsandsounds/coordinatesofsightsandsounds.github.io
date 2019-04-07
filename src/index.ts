@@ -10,7 +10,7 @@ const app = select('#app')
 
 app.append('h1')
   .attr('class', 'title')
-  .text('Coordinates of Site and Sound')
+  .text('Coordinates of Sites and Sounds')
 
 const svg = app
   .append('div')

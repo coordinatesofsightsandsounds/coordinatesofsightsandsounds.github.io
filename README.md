@@ -1,13 +1,14 @@
-# Coordinates of Site and Sound
+# Coordinates of Sites and Sounds
 
 ## Develop
 ```bash
-npm run dev
+npx parcel src/index.html
 ```
 
 ## Build
 ```bash
-npm run build
+rm -r dist/
+npx parcel build src/index.html
 ```
 
 ## Deploy
