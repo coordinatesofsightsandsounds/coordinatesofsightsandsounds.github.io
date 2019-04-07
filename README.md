@@ -1,4 +1,4 @@
-# Coordinates of Sites and Sounds
+# Coordinates of Sights and Sounds
 
 ## Develop
 ```bash
