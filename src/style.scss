@@ -2,6 +2,7 @@
 
 #app {
   font-family: 'M PLUS 1p', serif;
+  color: #1B1B1B;
   margin: 2rem auto 0;
   width: 80%;
   max-width: 1200px;
@@ -10,5 +11,20 @@
     font-size: 28px;
     margin-bottom: 4rem;
     line-height: 2rem;
+    font-weight: 300;
+  }
+
+  #map {
+    circle {
+      fill: red;
+      stroke-width: 1;
+      stroke: white;
+      stroke-opacity: 1;
+    }
+
+    path {
+      fill: transparent;
+      stroke: #111;
+    }
   }
 }
