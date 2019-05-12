@@ -1,19 +1,28 @@
-import { Selection, BaseType } from 'd3-selection';
+import { Selection, BaseType, select } from 'd3-selection';
 import * as geo from 'd3-geo'
 import land from '../assets/ne_110m_land.json'
+import { Emitter } from '../core/eventemitter';
+import { Video } from './app';
+import { degreeToDecimalXY } from '../core/utils';
 // import * as topojson from 'topojson-client'
 // import world from './assets/world-110m.json'
 // import eye from './assets/eye.png';
 
 const projection = geo.geoEquirectangular();
 
-// 40°39’30.6”N 73°58’03.7”W
-const videos = [
-  { lat: 40, lng: -73 }
-]
+const markerWidth = 3
+const markerHoverWidth = 5
 
-export default (app: Selection<BaseType, {}, HTMLElement, any>) => {
-  const svg = app
+export default (
+  container: Selection<BaseType, {}, HTMLElement, any>,
+  videos: { [id: number]: Video },
+  bus: Emitter<[number]>
+) => {
+  container.append('h1')
+    .attr('class', 'title')
+    .text('Coordinates of Sights and Sounds')
+
+  const svg = container
     .append('div')
     .attr('id', 'map')
     .style('width', 400)
@@ -34,11 +43,19 @@ export default (app: Selection<BaseType, {}, HTMLElement, any>) => {
 
   svg.append("g")
     .selectAll("circle")
-    .data(videos)
+    .data(Object.keys(videos).map((id) => videos[id]))
     .join("circle")
-      .attr("cx", d => projection([d.lng, d.lat])[0])
-      .attr("cy", d => projection([d.lng, d.lat])[1])
-      .attr("r", 3)
+      .attr("cx", d => projection(degreeToDecimalXY(d.coordinate))[0])
+      .attr("cy", d => projection(degreeToDecimalXY(d.coordinate))[1])
+      .attr("r", markerWidth)
+      .attr("stroke-width", 1)
+      .on("mouseover", function () {
+        select(this).attr("r", markerHoverWidth).attr("stroke-width", 2)
+      })
+      .on("mouseout", function () {
+        select(this).attr("r", markerWidth).attr("stroke-width", 1)
+      })
+      .on("click", ({ id }) => bus.emit("show-video", id))
 
   // const markerWidth = 20
   // const markerHeight = 20
