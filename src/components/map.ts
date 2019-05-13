@@ -55,7 +55,14 @@ export default (
       .on("mouseout", function () {
         select(this).attr("r", markerWidth).attr("stroke-width", 1)
       })
-      .on("click", ({ id }) => bus.emit("show-video", id))
+      .on("click", ({ id }) => {
+        svg.style("display", "none")
+        bus.emit("show-video", id)
+      })
+
+  bus.on('hide-video', () => {
+    svg.style("display", "block")
+  })
 
   // const markerWidth = 20
   // const markerHeight = 20

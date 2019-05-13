@@ -18,7 +18,10 @@ export default (
       .append('button')
       .attr('class', 'close')
       .text('X')
-      .on('click', () => video.remove())
+      .on('click', () => {
+        bus.emit('hide-video', id)
+        video.remove()
+      })
 
     video.append('h3').text(videos[id].title)
 
