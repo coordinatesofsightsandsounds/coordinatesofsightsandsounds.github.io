@@ -13,5 +13,7 @@ npx parcel build src/index.html
 
 ## Deploy
 ```bash
+git add ./dist
+git commit -m"vx.x.x"
 git subtree push --prefix dist origin master
 ```

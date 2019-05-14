@@ -1,7 +1,7 @@
 @import './styles/reset.css';
 
 #app {
-  font-family: 'M PLUS 1p', serif;
+  font-family: 'M PLUS 1p', sans-serif;
   color: #1B1B1B;
   margin: 2rem auto 0;
   width: 80%;
@@ -31,7 +31,7 @@
   button {
     border: none;
     cursor: pointer;
-    font-family: 'M PLUS 1p', serif;
+    font-family: 'M PLUS 1p', sans-serif;
     font-size: inherit;
 
     &:focus {
