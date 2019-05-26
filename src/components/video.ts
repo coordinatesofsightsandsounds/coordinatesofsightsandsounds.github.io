@@ -17,17 +17,20 @@ export default (
     video.append('h2').text(degreeToString(videos[id].coordinate))
       .append('button')
       .attr('class', 'close')
-      .text('X')
+      .text('×')
+      // .text('x')
       .on('click', () => {
         bus.emit('hide-video', id)
         video.remove()
       })
 
-    video.append('h3').text(videos[id].title)
+    // video.append('h3').text(videos[id].title)
 
-    video.append('h3').text(videos[id].date)
+    video.append('h3').text(videos[id].date).attr('class', 'date')
     
     video.append('div').attr('id', 'player')
+
+    // video.append('h3').text('So and So').attr('class', 'attribution')
 
 
     // TODO - might be possible to initialize the player and change the id
@@ -36,11 +39,7 @@ export default (
       width: 640,
       loop: true
     })
-  
-    player.setVolume(0);
-  
-    player.on('player', function() {
-      console.log('played the video!')
-    })
+
+    player.play();
   })
 }

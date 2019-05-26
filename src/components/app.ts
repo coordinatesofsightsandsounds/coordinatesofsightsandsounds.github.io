@@ -46,7 +46,7 @@ export default (app: Selection<BaseType, {}, HTMLElement, any>) => {
     },
     335597358: {
       id: 335597358,
-      title: 'Collioure, France, August 12, 2018, jetty',
+      title: 'Collioure, France',
       date: 'August 12, 2018',
       coordinate: decimalToDegree([3.086859, 42.527878])
     },

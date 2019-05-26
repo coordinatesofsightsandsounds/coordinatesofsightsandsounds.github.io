@@ -1,14 +1,16 @@
-import { Selection, BaseType, select } from 'd3-selection';
+import { Selection, BaseType, select } from 'd3-selection'
 import * as geo from 'd3-geo'
 import land from '../assets/ne_110m_land.json'
-import { Emitter } from '../core/eventemitter';
-import { Video } from './app';
-import { degreeToDecimalXY } from '../core/utils';
+import { Emitter } from '../core/eventemitter'
+import { Video } from './app'
+import { degreeToDecimalXY } from '../core/utils'
 // import * as topojson from 'topojson-client'
 // import world from './assets/world-110m.json'
-// import eye from './assets/eye.png';
+// import eye from './assets/eye.png'
 
-const projection = geo.geoEquirectangular();
+const projection = geo.geoEquirectangular()
+// const projection = geo.geoInterruptedHomolosine()
+// geo.geoInterruptedSinusoidal();
 
 const markerWidth = 3
 const markerHoverWidth = 5
