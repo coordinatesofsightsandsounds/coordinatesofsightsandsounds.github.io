@@ -3,6 +3,7 @@ import map from './map'
 import video from './video'
 import { Emitter } from '../core/eventemitter'
 import { decimalToDegree } from '../core/utils';
+import { SimulationNodeDatum } from 'd3-force';
 
 
 export type Coordinate = {
@@ -14,7 +15,7 @@ export type Coordinate = {
   secondLng: number,
 }
 
-export type Video = {
+export type Video = SimulationNodeDatum & {
   id: number,
   title: string,
   date: string,
@@ -89,7 +90,7 @@ export default (app: Selection<BaseType, {}, HTMLElement, any>) => {
       }
     },
     10: {
-      id: 1,
+      id: -1,
       title: 'Fort Greene Park, Brooklyn, NY, USA, March 15, 2019, top of the hill',
       date: 'March 15, 2019',
       coordinate: {
@@ -102,7 +103,7 @@ export default (app: Selection<BaseType, {}, HTMLElement, any>) => {
       }
     },
     11: {
-      id: 11,
+      id: -1,
       title: 'East River Esplanade, 62nd Street, New York, NY, USA, March 21, 2019',
       date: 'March 21, 2019',
       coordinate: {
@@ -115,7 +116,7 @@ export default (app: Selection<BaseType, {}, HTMLElement, any>) => {
       }
     },
     12: {
-      id: 12,
+      id: -1,
       title: 'Guggenheim Museum,  New York, NY, USA, March 23, 2019',
       date: 'March 23, 2019',
       coordinate: {
@@ -128,19 +129,19 @@ export default (app: Selection<BaseType, {}, HTMLElement, any>) => {
       }
     },
     13: {
-      id: 13,
+      id: -1,
       title: 'Bucks County Playhouse, New Hope, NJ, USA',
       date: 'April 21, 2019',
       coordinate: decimalToDegree([-74.950765, 40.362344])
     },
     14: {
-      id: 14,
+      id: -1,
       title: 'Delaware and Raritan Canal State Park Trail, Lambertville, NJ, USA, April 21, 2019',
       date: 'April 21, 2019',
       coordinate: decimalToDegree([-74.945191, 40.363840])
     },
     15: {
-      id: 15,
+      id: -1,
       title: 'Chaim Baier Music Island, Prospect Park, Brooklyn, NY, USA, May 4, 2019',
       date: 'May 4, 2019',
       coordinate: decimalToDegree([-73.965041, 40.658142])
@@ -151,7 +152,7 @@ export default (app: Selection<BaseType, {}, HTMLElement, any>) => {
 
   container.attr('class', 'container')
 
-  map(container, videos, emitter)
+  map(container, Object.keys(videos).map((id) => videos[id]), emitter)
 
   video(container, videos, emitter)
 };

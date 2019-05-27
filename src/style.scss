@@ -60,10 +60,13 @@
       top: 72px;
 
       circle {
-        fill: red;
-        stroke: white;
+        // fill: red;
+        // stroke: white;
         stroke-opacity: 1;
-        cursor: pointer;
+
+        &:not(.disabled) {
+          cursor: pointer;
+        }
       }
   
       path {
